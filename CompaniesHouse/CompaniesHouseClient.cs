@@ -53,6 +53,11 @@ namespace CompaniesHouse
             return response.Data;
         }
 
+        /// <summary>
+        /// Search companies registered at Companies House
+        /// </summary>
+        /// <param name="searchTerm">The term being searched for.</param>
+        /// <returns>CompanySearch Resource</returns>
         public CompanySearch SearchCompanies(string searchTerm)
         {
             RestRequest request = new RestRequest();
@@ -63,6 +68,11 @@ namespace CompaniesHouse
             return Execute<CompanySearch>(request);
         }
 
+        /// <summary>
+        /// Get the basic company information
+        /// </summary>
+        /// <param name="companyNumber">The company number of the basic information to return.</param>
+        /// <returns>CompanyProfile Resource</returns>
         public CompanyProfile GetCompanyProfile(string companyNumber)
         {
             RestRequest request = new RestRequest();
@@ -71,6 +81,68 @@ namespace CompaniesHouse
             request.AddUrlSegment("company_number", companyNumber);
 
             return Execute<CompanyProfile>(request);
+        }
+
+        /// <summary>
+        /// Get the current address of a company
+        /// </summary>
+        /// <param name="companyNumber">The company number of the registered office address to return.</param>
+        /// <returns>RegisteredOfficeAddress Resource</returns>
+        public RegisteredOfficeAddress GetRegisteredOfficeAddress(string companyNumber)
+        {
+            RestRequest request = new RestRequest();
+            request.Resource = "company/{company_number}/registered-office-address";
+
+            request.AddUrlSegment("company_number", companyNumber);
+
+            return Execute<RegisteredOfficeAddress>(request);
+        }
+
+        /// <summary>
+        /// List the company officers
+        /// </summary>
+        /// <param name="companyNumber">The company number of the officer list being requested.</param>
+        /// <returns>OfficerList Resource</returns>
+        public OfficerList ListOfficers(string companyNumber)
+        {
+            RestRequest request = new RestRequest();
+            request.Resource = "company/{company_number}/officers";
+
+            request.AddUrlSegment("company_number", companyNumber);
+
+            return Execute<OfficerList>(request);
+        }
+
+        /// <summary>
+        /// Get the filing history of the company
+        /// </summary>
+        /// <param name="companyNumber">The company number that the filing history is required for.</param>
+        /// <returns>FilingHistoryList Resource</returns>
+        public FilingHistoryList ListFilingHistory(string companyNumber)
+        {
+            RestRequest request = new RestRequest();
+            request.Resource = "company/{company_number}/filing-history";
+
+            request.AddUrlSegment("company_number", companyNumber);
+            
+            return Execute<FilingHistoryList>(request);
+        }
+
+        /// <summary>
+        /// Get the filing history of the company and filing transaction id
+        /// </summary>
+        /// <param name="companyNumber">The company number that the filing history is required for.</param>
+        /// <param name="transactionID">The transaction id that the filing history is required for.</param>
+        /// <returns>FilingHistoryItem Resource</returns>
+        public FilingHistoryItem GetFilingHistory(string companyNumber, string transactionID)
+        {
+            RestRequest request = new RestRequest();
+            request.Resource = "company/{company_number}/filing-history/{transaction_id}";
+
+            request.AddUrlSegment("company_number", companyNumber);
+            request.AddUrlSegment("transaction_id", transactionID);
+
+            return Execute<FilingHistoryItem>(request);
         }
     }
 

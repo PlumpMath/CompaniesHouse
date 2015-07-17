@@ -78,6 +78,7 @@ namespace CompaniesHouse.Models
             string Locality { get; set; }
             string POBox { get; set; }
             string PostalCode { get; set; }
+            string Premises { get; set; }
             string Region { get; set; }
         }
 
@@ -93,6 +94,7 @@ namespace CompaniesHouse.Models
             public string Locality { get; set; }
             public string POBox { get; set; }
             public string PostalCode { get; set; }
+            public string Premises { get; set; }
             public string Region { get; set; }
         }
 
