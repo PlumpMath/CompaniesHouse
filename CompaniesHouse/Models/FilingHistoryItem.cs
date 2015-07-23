@@ -12,8 +12,8 @@ namespace CompaniesHouse.Models
     [Guid("656E8A2F-59C6-436B-ADB4-67CAAAB61A4F")]
     public class FilingHistoryItem : IFilingHistoryItem
     {
-        public List<Annotation> Annotations { get; set; }
-        public Annotation[] Annotations_COM
+        public List<AnnotationInfo> Annotations { get; set; }
+        public AnnotationInfo[] Annotations_COM
         {
             get
             {
@@ -48,7 +48,7 @@ namespace CompaniesHouse.Models
         public string Type { get; set; }
 
         [Guid("D8AF29E2-CC57-4CDC-9CB7-E517C73FC652")]
-        public interface IAnnotation
+        public interface IAnnotationInfo
         {
             string Annotation { get; set; }
             DateTime Date { get; set; }
@@ -58,7 +58,7 @@ namespace CompaniesHouse.Models
         [ComVisible(true)]
         [ClassInterface(ClassInterfaceType.None)]
         [Guid("B9AE65F7-2B4C-4752-A6D8-5F62834AFE34")]
-        public class Annotation : IAnnotation
+        public class AnnotationInfo : IAnnotationInfo
         {
             public string Annotation { get; set; }
             public DateTime Date { get; set; }
@@ -127,8 +127,8 @@ namespace CompaniesHouse.Models
     [Guid("5C0B1980-61F1-4393-A8C7-3F4372F31A4A")]
     public interface IFilingHistoryItem
     {
-        List<FilingHistoryItem.Annotation> Annotations { get; set; }
-        FilingHistoryItem.Annotation[] Annotations_COM { get; }
+        List<FilingHistoryItem.AnnotationInfo> Annotations { get; set; }
+        FilingHistoryItem.AnnotationInfo[] Annotations_COM { get; }
         List<FilingHistoryItem.AssociatedFiling> AssociatedFilings { get; set; }
         string Barcode { get; set; }
         string Category { get; set; }

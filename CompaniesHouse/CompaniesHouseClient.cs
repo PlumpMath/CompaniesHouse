@@ -154,5 +154,9 @@ namespace CompaniesHouse
         Error LastError { get; set; }
         CompanySearch SearchCompanies(string searchTerm);
         CompanyProfile GetCompanyProfile(string companyNumber);
+        RegisteredOfficeAddress GetRegisteredOfficeAddress(string companyNumber);
+        OfficerList ListOfficers(string companyNumber);
+        FilingHistoryList ListFilingHistory(string companyNumber);
+        FilingHistoryItem GetFilingHistory(string companyNumber, string transactionID);
     }
 }
