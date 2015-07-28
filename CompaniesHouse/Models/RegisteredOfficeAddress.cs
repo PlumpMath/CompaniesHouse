@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using RestSharp.Deserializers;
+using System;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CompaniesHouse.Models
 {
@@ -12,7 +9,9 @@ namespace CompaniesHouse.Models
     [Guid("AB452CBA-8ED3-461C-86F3-F7B1A70E3C40")]
     public class RegisteredOfficeAddress : IRegisteredOfficeAddress
     {
+        [DeserializeAs(Name="address_line_1")]
         public string AddressLine1 { get; set; }
+        [DeserializeAs(Name = "address_line_2")]
         public string AddressLine2 { get; set; }
         public string Country { get; set; }
         public string ETag { get; set; }
